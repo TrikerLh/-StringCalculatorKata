@@ -5,7 +5,6 @@ namespace StringCalculatorKata.Tests
     public class StringCalculatorShould
     {
         private StringCalculator stringCalculator;
-
         [SetUp]
         public void Setup()
         {
@@ -26,6 +25,14 @@ namespace StringCalculatorKata.Tests
             var result = stringCalculator.Add("1");
 
             result.Should().Be(1);
+        }
+
+        [Test]
+        public void Return_2()
+        {
+            var result = stringCalculator.Add("2");
+
+            result.Should().Be(2);
         }
     }
 }
