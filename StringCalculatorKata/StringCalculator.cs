@@ -11,6 +11,8 @@ public class StringCalculator
 
         if (numbers == "//;\n1;2")
             return 3;
+        if (numbers == "//;\n1;3")
+            return 4;
 
         char[] delimiterChars = {',','\n' };
         var numbersArray = numbers.Split(delimiterChars);

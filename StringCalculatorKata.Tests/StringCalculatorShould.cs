@@ -76,11 +76,19 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
-        public void Return_add_whit_diferents_separators()
+        public void Return_3()
         {
             var result = stringCalculator.Add("//;\n1;2");
 
             result.Should().Be(3);
+        }
+
+        [Test]
+        public void Return_4()
+        {
+            var result = stringCalculator.Add("//;\n1;3");
+
+            result.Should().Be(4);
         }
     }
 }
