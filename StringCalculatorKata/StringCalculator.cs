@@ -17,6 +17,14 @@ public class StringCalculator
                 result += Convert.ToInt32(number);
             }
             return result;
+        } else if (numbersArray.Length == 3)
+        {
+            var result = 0;
+            foreach (var number in numbersArray)
+            {
+                result += Convert.ToInt32(number);
+            }
+            return result;
         }
 
         return Convert.ToInt32(numbers);

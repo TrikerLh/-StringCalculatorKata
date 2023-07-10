@@ -54,5 +54,13 @@ namespace StringCalculatorKata.Tests
 
             result.Should().Be(expected);
         }
+
+        [Test]
+        public void Return_add_whit_some_numbers()
+        {
+            var result = stringCalculator.Add("1,2,3");
+
+            result.Should().Be(6);
+        }
     }
 }
