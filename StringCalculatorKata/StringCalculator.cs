@@ -6,13 +6,7 @@ public class StringCalculator
     {
         if (numbers == "")
             return 0;
-        else if(numbers == "1")
-        {
-            return 1;
-        } else if (numbers == "2")
-        {
-            return 2;
-        }
-        return 0;
+
+        return Convert.ToInt32(numbers);
     }
 }
