@@ -36,5 +36,13 @@ namespace StringCalculatorKata.Tests
 
             result.Should().Be(10);
         }
+
+        [Test]
+        public void Return_10_with_numbers_6_and_4()
+        {
+            var result = stringCalculator.Add("6,4");
+
+            result.Should().Be(10);
+        }
     }
 }
