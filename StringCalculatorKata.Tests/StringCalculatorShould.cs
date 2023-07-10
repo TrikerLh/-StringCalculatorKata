@@ -4,15 +4,18 @@ namespace StringCalculatorKata.Tests
 {
     public class StringCalculatorShould
     {
+        private StringCalculator stringCalculator;
+
         [SetUp]
         public void Setup()
         {
+            stringCalculator = new StringCalculator();
         }
 
         [Test]
         public void Return_0_when_string_is_empty()
         {
-            var result = new StringCalculator().Add("");
+            var result = stringCalculator.Add("");
 
             result.Should().Be(0);
         }
@@ -20,7 +23,7 @@ namespace StringCalculatorKata.Tests
         [Test]
         public void Return_1()
         {
-            var result = new StringCalculator().Add("1");
+            var result = stringCalculator.Add("1");
 
             result.Should().Be(1);
         }
