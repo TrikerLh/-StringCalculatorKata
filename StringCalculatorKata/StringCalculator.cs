@@ -9,7 +9,8 @@ public class StringCalculator
         if (numbers == "")
             return 0;
 
-        var numbersArray = numbers.Split(',');
+        char[] delimiterChars = {',','\n' };
+        var numbersArray = numbers.Split(delimiterChars);
         var result = 0;
         foreach (var number in numbersArray)
         {

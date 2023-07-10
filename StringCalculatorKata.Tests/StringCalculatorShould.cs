@@ -64,5 +64,13 @@ namespace StringCalculatorKata.Tests
 
             result.Should().Be(expected);
         }
+
+        [Test]
+        public void Return_add_whit_return_separator()
+        {
+            var result = stringCalculator.Add("1\n2,3");
+            
+            result.Should().Be(6);
+        }
     }
 }
