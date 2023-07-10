@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace StringCalculatorKata;
 
 public class StringCalculator
@@ -6,8 +8,16 @@ public class StringCalculator
     {
         if (numbers == "")
             return 0;
-        if(numbers == "5,5" || numbers == "6,4")
-            return 10;
+        var numbersArray = numbers.Split(',');
+        if (numbersArray.Length == 2)
+        {
+            var result = 0;
+            foreach (var number in numbersArray)
+            {
+                result += Convert.ToInt32(number);
+            }
+            return result;
+        }
 
         return Convert.ToInt32(numbers);
     }

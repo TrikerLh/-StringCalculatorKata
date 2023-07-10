@@ -44,5 +44,15 @@ namespace StringCalculatorKata.Tests
 
             result.Should().Be(10);
         }
+
+        [TestCase("5,5", 10)]
+        [TestCase("6,4", 10)]
+        [TestCase("50,20", 70)]
+        public void Return_add_with_two_number(string numbers, int expected)
+        {
+            var result = stringCalculator.Add(numbers);
+
+            result.Should().Be(expected);
+        }
     }
 }
