@@ -19,22 +19,6 @@ namespace StringCalculatorKata.Tests
             result.Should().Be(0);
         }
 
-        [Test]
-        public void Return_1()
-        {
-            var result = stringCalculator.Add("1");
-
-            result.Should().Be(1);
-        }
-
-        [Test]
-        public void Return_2()
-        {
-            var result = stringCalculator.Add("2");
-
-            result.Should().Be(2);
-        }
-
         [TestCase("1",1)]
         [TestCase("2", 2)]
         [TestCase("50", 50)]
@@ -43,6 +27,14 @@ namespace StringCalculatorKata.Tests
             var result = stringCalculator.Add(numbers);
 
             result.Should().Be(expected);
+        }
+
+        [Test]
+        public void Return_10_with_numbers_5_and_5()
+        {
+            var result = stringCalculator.Add("5,5");
+
+            result.Should().Be(10);
         }
     }
 }
