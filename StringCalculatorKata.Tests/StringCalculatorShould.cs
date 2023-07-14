@@ -68,5 +68,13 @@ namespace StringCalculatorKata.Tests
 
             result.Should().Be(expected);
         }
+
+        [Test]
+        public void throw_exception_when_contains_negative_numbers()
+        {
+            Action act = () => stringCalculator.Add("1;2;-3");
+
+            act.Should().Throw<NegativesNotAllowed>().And.Number.Should().Be(-3);
+        }
     }
 }
