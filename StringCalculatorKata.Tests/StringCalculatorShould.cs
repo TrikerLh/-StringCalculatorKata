@@ -75,20 +75,14 @@ namespace StringCalculatorKata.Tests
             result.Should().Be(expected);
         }
 
-        [Test]
-        public void Return_3()
+        [TestCase("//;\n1;2", 3)]
+        [TestCase("//(\n1(2,3", 6)]
+        [TestCase("//-\n1-2,3\n4", 10)]
+        public void Return_add_whit_diferent_separator(string numbers, int expected)
         {
-            var result = stringCalculator.Add("//;\n1;2");
+            var result = stringCalculator.Add(numbers);
 
-            result.Should().Be(3);
-        }
-
-        [Test]
-        public void Return_4()
-        {
-            var result = stringCalculator.Add("//;\n1;3");
-
-            result.Should().Be(4);
+            result.Should().Be(expected);
         }
     }
 }
