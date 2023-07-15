@@ -72,7 +72,7 @@ namespace StringCalculatorKata.Tests
         [Test]
         public void throw_exception_when_contains_negative_numbers()
         {
-            Action act = () => stringCalculator.Add("1;2;-3");
+            Action act = () => stringCalculator.Add("1,2,-3");
 
             act.Should().Throw<NegativesNotAllowed>().And.Number.Should().Be(-3);
         }

@@ -8,7 +8,17 @@ public class StringCalculator
         if (numbers == "") return 0;
 
         var numbersArray = GetNumbersArray(numbers);
-        return numbersArray.Sum(Convert.ToInt32);
+        var result = 0;
+        foreach (var number in numbersArray) {
+            if (Convert.ToInt32(number) >= 0) {
+                result = result + Convert.ToInt32(number);
+            }
+            else {
+                throw new NegativesNotAllowed(Convert.ToInt32(number));
+            }
+        }
+
+        return result;
     }
 
     private static string[] GetNumbersArray(string numbers) {
