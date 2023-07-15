@@ -74,13 +74,20 @@ namespace StringCalculatorKata.Tests
         {
             Action act = () => Add("1,2,-3");
 
-            act.Should().Throw<NegativesNotAllowed>().And.Number.Should().Be(-3);
+            act.Should().Throw<NegativesNotAllowed>().And.Message.Should().Be("Negative not allowed : -3");
+        }
+
+        [Test]
+        public void throw_exception_when_contains_many_negative_numbers()
+        {
+            Action act = () => Add("1,2,-3,-4");
+
+            act.Should().Throw<NegativesNotAllowed>().And.Message.Should().Be("Negative not allowed : -3, -4");
         }
 
         private int Add(string numbers)
         {
-            var result = stringCalculator.Add(numbers);
-            return result;
+            return stringCalculator.Add(numbers);
         }
     }
 }
