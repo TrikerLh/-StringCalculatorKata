@@ -69,20 +69,16 @@ namespace StringCalculatorKata.Tests
             result.Should().Be(expected);
         }
 
-        [Test]
-        public void throw_exception_when_contains_negative_numbers()
+        [TestCase("1,2,-3", "Negative not allowed : -3")]
+        [TestCase("1,2,-3,-4", "Negative not allowed : -3, -4")]
+        [TestCase("1,2\n-3,-4", "Negative not allowed : -3, -4")]
+        [TestCase("//(\n1(2,-89(-90", "Negative not allowed : -89, -90")]
+        [TestCase("//t\n1t2,3\n4\n-85t5,-25t-99", "Negative not allowed : -85, -25, -99")]
+        public void throw_exception_when_contains_negative_numbers(string numbers, string expected)
         {
-            Action act = () => Add("1,2,-3");
+            Action act = () => Add(numbers);
 
-            act.Should().Throw<NegativesNotAllowed>().And.Message.Should().Be("Negative not allowed : -3");
-        }
-
-        [Test]
-        public void throw_exception_when_contains_many_negative_numbers()
-        {
-            Action act = () => Add("1,2,-3,-4");
-
-            act.Should().Throw<NegativesNotAllowed>().And.Message.Should().Be("Negative not allowed : -3, -4");
+            act.Should().Throw<NegativesNotAllowed>().And.Message.Should().Be(expected);
         }
 
         private int Add(string numbers)
