@@ -22,38 +22,28 @@ public class StringCalculator
         return listOfSeparators.ToArray();
     }
 
-    private static int TryToAdd(IEnumerable<string> numbersArray)
-    {
+    private static int TryToAdd(IEnumerable<string> numbersArray) {
         var result = 0;
-        List<string> negativesNumbers = new List<string>();
+        var negativesNumbers = new List<string>();
         foreach (var number in numbersArray) {
-            if (Convert.ToInt32(number) >= 0) {
+            if (Convert.ToInt32(number) >= 0) 
                 result += Convert.ToInt32(number);
-            }
-            else {
+            else 
                 negativesNumbers.Add(number);
-            }
         }
-
-        if (negativesNumbers.Count > 0)
-        {
+        if (negativesNumbers.Count > 0) {
             throw new NegativesNotAllowed(GetExceptionMessage(negativesNumbers));
         }
         return result;
     }
 
-    private static string GetExceptionMessage(IReadOnlyList<string> negativesNumbers)
-    {
+    private static string GetExceptionMessage(IReadOnlyList<string> negativesNumbers) {
         var message = "Negative not allowed : ";
-        for (var i = 0; i < negativesNumbers.Count; i++)
-        {
-            if (i == negativesNumbers.Count - 1) {
-                message += negativesNumbers[i];
-            } else {
-                message += negativesNumbers[i] + ", ";
-            }
+        for (var i = 0; i < negativesNumbers.Count; i++) {
+            message += negativesNumbers[i];
+            if (i < negativesNumbers.Count - 1)
+                message += ", ";
         }
-
         return message;
     }
 }
