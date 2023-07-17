@@ -32,18 +32,8 @@ public class StringCalculator
                 negativesNumbers.Add(number);
         }
         if (negativesNumbers.Count > 0) {
-            throw new NegativesNotAllowed(GetExceptionMessage(negativesNumbers));
+            throw new NegativesNotAllowed(negativesNumbers);
         }
         return result;
-    }
-
-    private static string GetExceptionMessage(IReadOnlyList<string> negativesNumbers) {
-        var message = "Negative not allowed : ";
-        for (var i = 0; i < negativesNumbers.Count; i++) {
-            message += negativesNumbers[i];
-            if (i < negativesNumbers.Count - 1)
-                message += ", ";
-        }
-        return message;
     }
 }
