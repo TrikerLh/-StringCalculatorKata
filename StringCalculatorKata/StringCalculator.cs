@@ -26,9 +26,9 @@ public class StringCalculator
         var result = 0;
         var negativesNumbers = new List<string>();
         foreach (var number in numbersArray) {
-            if (Convert.ToInt32(number) >= 0) 
+            if (Convert.ToInt32(number) >= 0 && Convert.ToInt32(number) <= 1000) 
                 result += Convert.ToInt32(number);
-            else 
+            else if (Convert.ToInt32(number) < 0)
                 negativesNumbers.Add(number);
         }
         if (negativesNumbers.Count > 0) {
