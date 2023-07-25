@@ -73,12 +73,14 @@ namespace StringCalculatorKata.Tests
             act.Should().Throw<NegativesNotAllowed>().And.Message.Should().Be(expected);
         }
 
-        [Test]
-        public void Ignore_numbers_greater_than_a_thousand()
+        [TestCase("1001, 2", 2)]
+        [TestCase("//;\n1;2005", 1)]
+        [TestCase("//(\n1(2,3225\n5,10(4(58962", 22)]
+        public void Ignore_numbers_greater_than_a_thousand(string numbers, int expected)
         {
-            var result = Add("1001,2");
+            var result = Add(numbers);
 
-            result.Should().Be(2);
+            result.Should().Be(expected);
         }
 
         private int Add(string numbers) {
