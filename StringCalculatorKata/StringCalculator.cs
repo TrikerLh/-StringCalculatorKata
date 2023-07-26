@@ -31,8 +31,10 @@ public class StringCalculator
     {
         var delimeters = numbers.Split('[');
         if (delimeters.Length > 1)
-        { 
-            listOfDelimeters.Add(delimeters[1].Substring(0, delimeters[1].Length - 1));
+        {
+            for (var i = 1; i < delimeters.Length; i++) { 
+                listOfDelimeters.Add(delimeters[i].Substring(0, delimeters[i].Length - 1));
+            }
         }
         else 
         {
