@@ -83,6 +83,14 @@ namespace StringCalculatorKata.Tests
             result.Should().Be(expected);
         }
 
+        [Test]
+        public void Separators_with_different_lengths()
+        {
+            var result = Add("//[***]\n1***2***3");
+
+            result.Should().Be(6);
+        }
+
         private int Add(string numbers) {
             return stringCalculator.Add(numbers);
         }

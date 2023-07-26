@@ -10,16 +10,32 @@ public class StringCalculator
     }
 
     private static string[] GetNumbersArray(string numbers) {
-        var delimiterChars = GetDelimiterChars(numbers);
-        if (delimiterChars.Length > 2) numbers = numbers.Substring(4);
-        return numbers.Split(delimiterChars);
+        var delimiterStrings = GetDelimiterChars(numbers);
+        if (delimiterStrings.Length > 2) numbers = numbers.Split('\n')[1];
+        return numbers.Split(delimiterStrings, StringSplitOptions.None);
     }
 
-    private static char[] GetDelimiterChars(string numbers) {
-        var listOfSeparators = new List<char>() { ',', '\n' };
-        if (numbers.StartsWith("//")) 
-            listOfSeparators.Add(numbers[2]);
-        return listOfSeparators.ToArray();
+    private static string[] GetDelimiterChars(string numbers) {
+        var listOfDelimeters = new List<string>() { ",", "\n" };
+        if (numbers.StartsWith("//"))
+            GetDelimeters(numbers.Split('\n')[0], listOfDelimeters);
+        return listOfDelimeters.ToArray();
+    }
+
+    private static void GetDelimeters(string numbers, List<string> listOfDelimeters)
+    {
+        var delimeters = numbers.Split('[');
+        if (delimeters.Length > 1)
+        {
+            for (var i = 1; i < delimeters.Length; i++)
+            {
+                listOfDelimeters.Add(delimeters[i].Substring(0, delimeters[i].Length - 1));
+            }
+        }
+        else 
+        {
+            listOfDelimeters.Add(numbers[2].ToString());
+        }
     }
 
     private static int TryToAdd(IEnumerable<string> numbersArray) {
