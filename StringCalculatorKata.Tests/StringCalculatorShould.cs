@@ -93,12 +93,14 @@ namespace StringCalculatorKata.Tests
             result.Should().Be(expected);
         }
 
-        [Test]
-        public void Multiple_separators_with_different_lengths()
+        [TestCase("//[*][%]\n1*2%3", 6)]
+        [TestCase("//[***][%]\n10***2%3", 15)]
+        [TestCase("//[a][%&/][qwe][*]\n10*2%&/1235a151qwe25,1478\n28", 216)]
+        public void Multiple_separators_with_different_lengths(string numbers, int expected)
         {
-            var result = Add("//[*][%]\n1*2%3");
+            var result = Add(numbers);
 
-            result.Should().Be(6);
+            result.Should().Be(expected);
         }
 
 
