@@ -83,12 +83,14 @@ namespace StringCalculatorKata.Tests
             result.Should().Be(expected);
         }
 
-        [Test]
-        public void Separators_with_different_lengths()
+        [TestCase("//[***]\n1***2***3", 6)]
+        [TestCase("//[abc]\n1abc2,3\n1025abc48abc1589", 54)]
+        [TestCase("//[()f]\n48()f78,1023\n54()f23()f58562", 203)]
+        public void Separators_with_different_lengths(string numbers, int expected)
         {
-            var result = Add("//[***]\n1***2***3");
+            var result = Add(numbers);
 
-            result.Should().Be(6);
+            result.Should().Be(expected);
         }
 
         private int Add(string numbers) {
