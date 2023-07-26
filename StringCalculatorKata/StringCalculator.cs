@@ -11,7 +11,12 @@ public class StringCalculator
 
     private static string[] GetNumbersArray(string numbers) {
         var delimiterStrings = GetDelimiterChars(numbers);
-        if (delimiterStrings.Length > 2) numbers = numbers.Split('\n')[1];
+        if (delimiterStrings.Length > 2)
+        {
+            var index = numbers.IndexOf('\n');
+            numbers = numbers.Substring(index + 1, numbers.Length - index - 1);
+        }
+
         return numbers.Split(delimiterStrings, StringSplitOptions.None);
     }
 
@@ -26,11 +31,8 @@ public class StringCalculator
     {
         var delimeters = numbers.Split('[');
         if (delimeters.Length > 1)
-        {
-            for (var i = 1; i < delimeters.Length; i++)
-            {
-                listOfDelimeters.Add(delimeters[i].Substring(0, delimeters[i].Length - 1));
-            }
+        { 
+            listOfDelimeters.Add(delimeters[1].Substring(0, delimeters[1].Length - 1));
         }
         else 
         {
